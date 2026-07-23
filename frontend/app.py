@@ -2,6 +2,8 @@ import streamlit as st
 import requests
 import re
 
+BACKEND_URL = "https://talkright.onrender.com/chat"
+
 st.set_page_config(
     page_title="TalkRight",
     page_icon="💬",
@@ -145,7 +147,7 @@ if user_message:
 
     with st.spinner("Thinking..."):
         response = requests.post(
-            "http://127.0.0.1:8000/chat",
+            BACKEND_URL,
             json={"user_input": user_message}
         )
         bot_reply = response.json()["message"]
